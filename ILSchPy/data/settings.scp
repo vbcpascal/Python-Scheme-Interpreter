@@ -1,0 +1,14 @@
+; settings
+(list rc (fs 15) (ff "Consolas"))
+            
+; 本文档用于配置编辑器的基本信息，仅需将所需参数加入到list中即可
+
+#| 相关变量说明：
+(define df (open debug_file))   ;开启文件相关Debug工具
+(define dc (open debug_code))   ;开启代码相关Debug工具
+(define ds (open debug_set))    ;开启设置相关Debug工具
+(define rc (open run_clear))    ;在运行代码前，清空输出框
+(define fs (lambda (x) (set_font_size x)))  ;将字号设为x
+(define ff (lambda (str) (set_font str)))   ;将字体设为str
+祝你成功 |#
+        

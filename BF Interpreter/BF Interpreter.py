@@ -1,5 +1,4 @@
 # -*- coding: UTF-8 -*-
-# python 3.6 using PyCharm
 # BrainF*ck Interpreter
 # vbcpascal
 
@@ -95,8 +94,10 @@ def get_input_num(str="", cnt=0, IgnoreError=0):
         try:
             lst[i] = int(lst[i])
         except ValueError:
-            if IgnoreError: lst[i] = 0
-            else: return 2
+            if IgnoreError:
+                lst[i] = 0
+            else:
+                return 2
     if (not IgnoreError) and (len(lst) != cnt):
         return 3
     if len(lst) < cnt:
@@ -111,14 +112,20 @@ def input_options(args):
     c = args[0]
     args = args[1:]
     res = 0
-    if c == 'E': return -100
+    if c == 'E':
+        return -100
     elif c == 'R':
         res = 1
-        if '-E' in args: res += (1 << 1)
-        if '-O' in args: res += (1 << 2)
-        if '-S' in args: res += (1 << 3)
-        if '-F' in args: res += (1 << 4)
-        if '-P' in args: res += (1 << 5)
+        if '-E' in args:
+            res += (1 << 1)
+        if '-O' in args:
+            res += (1 << 2)
+        if '-S' in args:
+            res += (1 << 3)
+        if '-F' in args:
+            res += (1 << 4)
+        if '-P' in args:
+            res += (1 << 5)
         return res
     elif c == 'H':
         print('BrainF*ck Interpreter, version 0.1.0')
@@ -164,7 +171,8 @@ def work():
     elif c == 0:    # 'H' or Input Error
         return 0
     else:
-        if get_bit(c, 3): size = 1000
+        if get_bit(c, 3):
+            size = 1000
         else:
             size = input('Input size of the array: ')
             try:
@@ -180,7 +188,8 @@ def work():
             print('Input the code: (use "/end" to end edit)')
             while True:
                 tmp_code = input('$ ')
-                if tmp_code == '/end': break
+                if tmp_code == '/end':
+                    break
                 code += tmp_code
 
         cnt = code.count(',')
@@ -189,8 +198,10 @@ def work():
         else:
             num_input = input('Input the number (Total %d): ' % (cnt))
             res = get_input_num(num_input, cnt, get_bit(c, 4))
-            if res == 2: return 2  # 2: Wrong value type in Input
-            if res == 3: return 3  # 3: Wrong number of Input
+            if res == 2:
+                return 2  # 2: Wrong value type in Input
+            if res == 3:
+                return 3  # 3: Wrong number of Input
         BrainF(code, size, res, c)
         print('Process finished with exit code 0')
         return 0
@@ -200,13 +211,19 @@ def main():
     print('Welcome to use Brainf*ck interpreter 0.1.0')
     while True:
         e = work()
-        if e == 0: continue
-        elif e == -100: break
+        if e == 0:
+            continue
+        elif e == -100:
+            break
         # print()
-        if e == -1: print('Error(%d): Input Error' % e)
-        elif e == 1: print('Error(%d): Unexpected input value type' % e)
-        elif e == 2: print('Error(%d): Wrong value type in Input' % e)
-        elif e == 3: print('Error(%d): Wrong number of Input' % e)
+        if e == -1:
+            print('Error(%d): Input Error' % e)
+        elif e == 1:
+            print('Error(%d): Unexpected input value type' % e)
+        elif e == 2:
+            print('Error(%d): Wrong value type in Input' % e)
+        elif e == 3:
+            print('Error(%d): Wrong number of Input' % e)
     return 0
 
 
